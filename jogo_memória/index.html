@@ -6,9 +6,42 @@
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  </head>
   <body>
+    <div class="game-container">
+      <div class="difficulty-selection" id="difficulty-selection">
+          <label for="difficulty">Escolha o nível de dificuldade:</label>
+          <select id="difficulty">
+              <option value="easy">Fácil (4 pares)</option>
+              <option value="medium">Médio (6 pares)</option>
+              <option value="hard">Difícil (8 pares)</option>
+          </select>
+      <button id="start-game" style="display:none;">Iniciar Jogo</button>
+  </div>
+     
+  <div id="win-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <img src="imagens/trofeu.png" alt="Troféu" class="modal-icon">
+        <h2>Parabéns, você venceu!</h2>
+        <p>Você conseguiu combinar todas as cartas!</p>
+        <button id="play-again-button">Jogar novamente</button>
+        <button id="back-to-selection-button" class="back-button">Voltar à seleção de fases</button>
+    </div>
+</div>
+
+  <div id="time-up-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <h2>Ops!O tempo acabou!</h2>
+      <p>Não se preocupe, você pode tentar novamente!</p>
+      <button id="retry-button">Tentar novamente</button>
+    </div>
+  </div>
+  
+  <div id="game-board" style="display:none;">
+    <div id="timer">Tempo restante: 60 segundos</div>
+    <div id="score">Pontuação: 0</div>
     <div class="wrapper">
-      <ul class="cards">
+        <ul class="cards">
         <li class="card">
           <div class="view front-view">
             <img src="imagens/pontoi.png" alt="icon">
