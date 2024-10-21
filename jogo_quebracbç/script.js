@@ -7,60 +7,60 @@ const choices = Array.from(document.getElementsByClassName("choice"));
 const feedback = document.getElementById("feedback");
 const nextPhaseButton = document.getElementById("next-phase-button");
 
-let currentPhase = 0; // Fase inicial
+let currentPhase = 0; 
 
 const phases = [
     {
         question: "Qual sentido usamos?",
-        image: "caminho/para/imagem1.jpg",
+        image: "imagens/binoculo.png",
         answers: ["👄", "👁️", "✋","👂"],
         correctAnswer: 1
     },
     {
         question: "Qual sentido usamos?",
-        image: "caminho/para/imagem2.jpg",
+        image: "imagens/fone.png",
         answers: ["👂", "👁️", "👄","✋"],
         correctAnswer: 0
     },
     {
         question: "Qual sentido usamos?",
-        image: "caminho/para/imagem3.jpg",
+        image: "imagens/luva.png",
         answers: ["👄", "👂", "✋","👁️"],
         correctAnswer: 2
     },
     {
         question: "Qual sentido usamos?",
-        image: "caminho/para/imagem4.jpg",
+        image: "imagens/oculos.png",
         answers: ["👄", "👁️", "👂","✋"],
         correctAnswer: 1
     },
     {
         question: "Qual sentido usamos?",
-        image: "caminho/para/imagem5.jpg",
+        image: "imagens/pizza.png",
         answers: ["👄", "✋", "👂","👁️"],
         correctAnswer: 0
     },
     {
         question: "Qual sentido usamos?",
-        image: "caminho/para/imagem6.jpg",
+        image: "imagens/tv.png",
         answers: ["👁️", "👂", "👄","✋"],
         correctAnswer: 0
     },
     {
         question: "Qual sentido usamos?",
-        image: "caminho/para/imagem7.jpg",
+        image: "imagens/teclado.png",
         answers: ["✋", "👂", "👄","👁️"],
         correctAnswer: 0
     },
     {
         question: "Qual sentido usamos?",
-        image: "caminho/para/imagem8.jpg",
+        image: "imagens/espelho.png",
         answers: ["👄", "👂", "👁️","✋"],
         correctAnswer: 2
     },
     {
         question: "Qual sentido usamos?",
-        image: "caminho/para/imagem9.jpg",
+        image: "imagens/tambor.png",
         answers: ["✋", "👂", "👁️","👄"],
         correctAnswer: 0
     },
@@ -132,7 +132,7 @@ const phases = [
     },
 ];
 
-// Função para carregar a fase
+
 function loadPhase(phaseIndex) {
     const phase = phases[phaseIndex];
     questionText.textContent = phase.question;
@@ -156,7 +156,7 @@ function loadPhase(phaseIndex) {
     });
 }
 
-// Avançar para a próxima fase
+
 nextPhaseButton.onclick = () => {
     currentPhase++;
     if (currentPhase < phases.length) {
@@ -167,7 +167,7 @@ nextPhaseButton.onclick = () => {
     }
 };
 
-// Iniciar o jogo
+
 startButton.onclick = () => {
     startScreen.style.display = "none";
     gameScreen.style.display = "block";
