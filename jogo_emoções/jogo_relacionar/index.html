@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Relacionar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Jogo de Relacionar</h1>
+    
+    <!-- Tela inicial de seleção de modo -->
+    <div id="start-screen">
+        <h2>Escolha um modo para jogar:</h2>
+        <div class="mode-buttons">
+            <button id="animal-btn" class="mode-btn animal">Animais</button>
+            <button id="fruit-btn" class="mode-btn fruits">Frutas</button> <!-- Alterado para fruit-btn -->
+            <button id="object-btn" class="mode-btn objects">Objetos</button> <!-- Alterado para object-btn -->
+        </div>        
+    </div>
+    
+    <!-- Contêineres para o jogo (inicialmente escondidos) -->
+    <div id="game-container" class="hidden">
+        <div class="main-container"> 
+        <div class="letters-container">
+            <div class="letter" data-letter="A">A</div>
+            <div class="letter" data-letter="B">B</div>
+            <div class="letter" data-letter="C">C</div>
+            <div class="letter" data-letter="D">D</div>
+            <div class="letter" data-letter="E">E</div>
+            <div class="letter" data-letter="F">F</div>
+            <div class="letter" data-letter="G">G</div>
+            <div class="letter" data-letter="H">H</div>
+            <div class="letter" data-letter="I">I</div>
+            <div class="letter" data-letter="J">J</div>
+            <div class="letter" data-letter="K">K</div>
+            <div class="letter" data-letter="L">L</div>
+            <div class="letter" data-letter="M">M</div>
+            <div class="letter" data-letter="N">N</div>
+            <div class="letter" data-letter="O">O</div>
+            <div class="letter" data-letter="P">P</div>
+            <div class="letter" data-letter="Q">Q</div>
+            <div class="letter" data-letter="R">R</div>
+            <div class="letter" data-letter="S">S</div>
+            <div class="letter" data-letter="T">T</div>
+            <div class="letter" data-letter="U">U</div>
+            <div class="letter" data-letter="V">V</div>
+            <div class="letter" data-letter="W">W</div>
+            <div class="letter" data-letter="X">X</div>
+            <div class="letter" data-letter="Y">Y</div>
+            <div class="letter" data-letter="Z">Z</div>
+        </div>
+        <div class="images-container">
+            <div class="image" data-letter="A">
+                <img src="imagens/agua.png" alt="Água">
+            </div>
+            <div class="image" data-letter="B">
+                <img src="imagens/bolo.png" alt="Bolo">
+            </div>
+            <div class="image" data-letter="C">
+                <img src="imagens/caneta.png" alt="Caneta">
+            </div>
+            <div class="image" data-letter="D">
+                <img src="imagens/dinossauro.png" alt="Dinossauro">
+            </div>
+            <div class="image" data-letter="E">
+                <img src="imagens/elefante.png" alt="Elefante">
+            </div>
+            <div class="image" data-letter="F">
+                <img src="imagens/foca.png" alt="Foca">
+            </div>
+            <div class="image" data-letter="G">
+                <img src="imagens/garfo.png" alt="Garfo">
+            </div>
+            <div class="image" data-letter="H">
+                <img src="imagens/hipopotamo.png" alt="Hipopótamo">
+            </div>
+            <div class="image" data-letter="I">
+                <img src="imagens/igreja.png" alt="Igreja">
+            </div>
+            <div class="image" data-letter="J">
+                <img src="imagens/jarra.png" alt="Jarra">
+            </div>
+            <div class="image" data-letter="K">
+                <img src="imagens/kiwi.png" alt="Kiwi">
+            </div>
+            <div class="image" data-letter="L">
+                <img src="imagens/lapis.png" alt="Lápis">
+            </div>
+            <div class="image" data-letter="M">
+                 <img src="imagens/melancia.png" alt="Melancia">
+            </div>
+            <div class="image" data-letter="N">
+                <img src="imagens/navio.png" alt="Navio">
+            </div>
+            <div class="image" data-letter="O">
+                <img src="imagens/ovo.png" alt="Ovo">
+            </div>
+            <div class="image" data-letter="P">
+                <img src="imagens/perna.png" alt="Perna">
+            </div>
+            <div class="image" data-letter="Q">
+                <img src="images/queijo.png" alt="Queijo">
+            </div>
+            <div class="image" data-letter="R">
+                <img src="images/rato.png" alt="Rato">
+            </div>
+            <div class="image" data-letter="S">
+                <img src="images/sapo.png" alt="Sapo">
+            </div>
+            <div class="image" data-letter="T">
+                <img src="imagens/tatu.png" alt="Tatu">
+            </div>
+            <div class="image" data-letter="U">
+                <img src="images/uva.png" alt="Uva">
+            </div>
+            <div class="image" data-letter="V">
+                <img src="imagens/vaca.png" alt="Vaca">
+            </div>
+            <div class="image" data-letter="W">
+                <img src="imagens/waffle.png" alt="Waffle">
+            </div>
+            <div class="image" data-letter="X">
+                <img src="imagens/xicara.png" alt="Xícara">
+            </div>
+            <div class="image" data-letter="Y">
+                <img src="imagens/yakisoba.png" alt="Yakisoba">
+            </div>
+            <div class="image" data-letter="Z">
+                <img src="imagens/zebra.png" alt="Zebra">
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
