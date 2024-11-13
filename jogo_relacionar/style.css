@@ -22,6 +22,37 @@ body {
     margin: 0;
     background: var(--cor-fundo-gradiente); /* Gradiente colorido */
 }
+.container {
+    width: 650px; /* Largura do container */
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.container p {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Estilo do botão */
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
 
 /* Estilo do título */
 h1 {
@@ -162,6 +193,7 @@ h1 {
     cursor: pointer;
     margin: 20px; 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    pointer-events: none;
 }
 
 .image:hover {
@@ -174,6 +206,7 @@ h1 {
     height: 100%;
     object-fit: contain;
     border-radius: 5px;
+    pointer-events: none;
 }
 
 /* Quando a letra ou imagem for combinada corretamente */
