@@ -1,4 +1,4 @@
-// Array completo de animais de A a Z
+// Categorias
 const alphabetAnimals = [
     { letter: 'A', image: 'anta.png' },
     { letter: 'B', image: 'baleia.png' },
@@ -23,6 +23,7 @@ const alphabetAnimals = [
     { letter: 'V', image: 'veado.png' },
     { letter: 'Z', image: 'zebra.png' }
 ];
+
 const alphabetFruits = [
     { letter: 'A', image: 'amora.png' },
     { letter: 'B', image: 'banana.png' },
@@ -41,7 +42,6 @@ const alphabetFruits = [
     { letter: 'T', image: 'tangerina.png' },
     { letter: 'U', image: 'uva.png'},
 ];
-
 
 const alphabetObjects = [
     { letter: 'A', image: 'aviao.png' },
@@ -71,81 +71,80 @@ const alphabetObjects = [
     { letter: 'Z', image: 'ziper.png' }
 ];
 
-// Elementos HTML
+// Definir o tamanho da fase
+const phaseSize = 5;
+let currentPhase = 0;  // Fase atual
+
+// Referências aos elementos HTML
 const startScreen = document.getElementById('start-screen');
 const gameContainer = document.getElementById('game-container');
 const lettersContainer = document.querySelector('.letters-container');
 const imagesContainer = document.querySelector('.images-container');
-
-let selectedLetter = null; // Variável para armazenar a letra selecionada
 
 // Função para iniciar o jogo com a categoria escolhida
 function startGame(category) {
     startScreen.style.display = 'none'; // Esconde a tela inicial
     gameContainer.classList.remove('hidden'); // Exibe o contêiner do jogo
 
-    lettersContainer.innerHTML = '';
-    imagesContainer.innerHTML = '';
+    loadPhase(category); // Carrega a primeira fase
+}
 
-    category.forEach(item => {
-        // Criar os botões para as letras
+// Função para carregar a fase atual
+function loadPhase(category) {
+    const startIndex = currentPhase * phaseSize; // Início da fase
+    const phaseItems = category.slice(startIndex, startIndex + phaseSize); // Letras da fase atual
+
+    lettersContainer.innerHTML = ''; // Limpar os itens anteriores
+    imagesContainer.innerHTML = '';  // Limpar as imagens anteriores
+
+    phaseItems.forEach(item => {
         const letterButton = document.createElement('button');
         letterButton.classList.add('letter');
         letterButton.textContent = item.letter;
 
-        // Evento de clique para selecionar a letra
+        // Evento de clique na letra
         letterButton.addEventListener('click', () => {
-            selectedLetter = item.letter; // Armazena a letra selecionada
-            alert(`Você selecionou a letra: ${selectedLetter}`);
-
-            // Habilita o clique nas imagens
+            selectedLetter = item.letter;
             const images = document.querySelectorAll('.image');
             images.forEach(img => {
-                img.style.pointerEvents = 'auto'; // Habilita o clique nas imagens
+                img.style.pointerEvents = 'auto';
             });
         });
 
         lettersContainer.appendChild(letterButton);
 
-        // Criar as imagens
         const imageDiv = document.createElement('div');
         imageDiv.classList.add('image');
-        imageDiv.style.pointerEvents = 'none'; // Desabilita o clique nas imagens inicialmente
+        imageDiv.style.pointerEvents = 'none';
         const imgElement = document.createElement('img');
-        imgElement.src = `imagens/${item.image}`; // Aponte para o caminho correto das imagens
+        imgElement.src = `imagens/${item.image}`;
         imageDiv.appendChild(imgElement);
         imagesContainer.appendChild(imageDiv);
 
-        // Evento de clique para verificar correspondência
         imageDiv.addEventListener('click', () => checkMatch(item.letter, imageDiv, letterButton));
     });
 }
 
-// Função para verificar correspondência de letra e imagem
+// Função para verificar se a correspondência foi correta
 function checkMatch(letter, imageDiv, letterButton) {
-    if (imageDiv.classList.contains('matched')) {
-        alert('Esta imagem já foi relacionada corretamente.');
-        return; // Se a imagem já estiver correspondida, não faz nada
-    }
-
     if (letter === selectedLetter) {
         imageDiv.classList.add('matched');
-        alert('Correto! Você selecionou a imagem correspondente.');
-        // Desativar o botão correspondente após a seleção correta
         letterButton.disabled = true;
-    } else {
-        alert('Incorreto! Tente novamente.');
-    }
 
-    // Desabilita o clique nas imagens após a tentativa
-    const images = document.querySelectorAll('.image');
-    images.forEach(img => {
-        img.style.pointerEvents = 'none'; // desabilita o clique nas imagens
-    });
+        // Verifica se todas as imagens da fase foram correspondidas
+        if (document.querySelectorAll('.matched').length === phaseSize) {
+            currentPhase++; // Avança para a próxima fase
+            if (currentPhase * phaseSize < alphabetAnimals.length) {
+                loadPhase(alphabetAnimals); // Carrega a próxima fase
+            } else {
+                // Aqui você pode mostrar uma mensagem de sucesso ou o que preferir
+                console.log('Parabéns! Você completou todas as fases.');
+            }
+        }
+    }
 }
 
-// Eventos de clique nos botões de escolha de modo
+// Eventos de clique nos botões de escolha de categoria
 document.getElementById('animal-btn').addEventListener('click', () => startGame(alphabetAnimals));
 document.getElementById('fruit-btn').addEventListener('click', () => startGame(alphabetFruits));
 document.getElementById('object-btn').addEventListener('click', () => startGame(alphabetObjects));
-
