@@ -1,19 +1,19 @@
 :root {
-    --cor-animais: #ff6b6b; /* Um tom mais quente e suave */
-    --cor-frutas: #74b9ff;
-    --cor-objetos: #55efc4;
-    --cor-fundo-gradiente: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a1c4fd, #f6d365, #ff9a9e);
+    --cor-fundo-gradiente: linear-gradient(135deg, #f48fb1, #ec407a); /* Tons neutros claros */
+    --cor-animais: #fce4ec;
+    --cor-frutas: #f8bbd0;
+    --cor-objetos: #f48fb1;
     --cor-branco: rgba(255, 255, 255, 1);
-    --cor-verde-claro: rgba(173, 255, 47, 0.7);
-    --cor-error: #e74c3c;
-    --cor-principal: #3b5998; /* Cor de destaque mais moderna */
-    --cor-secundario: #8e44ad; /* Cor secundária */
+    --cor-verde-claro: #ec407a;
+    --cor-error: #c2185b;
+    --cor-principal: #ad1457;
+    --cor-secundario: #f06292;
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: var(--cor-fundo-gradiente);
-    color: #333;
+    color: #000000;
     margin: 0;
     padding: 0;
     display: flex;
@@ -157,6 +157,39 @@ h1 {
     height: 100%;
     object-fit: contain;
     border-radius: 8px;
+}
+#end-screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    width: 400px;
+}
+
+#end-screen h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#end-screen button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: var(--cor-principal);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#end-screen button:hover {
+    background-color: var(--cor-secundario);
 }
 
 .matched {
