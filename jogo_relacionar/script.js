@@ -1,4 +1,4 @@
-// Categorias
+
 const alphabetAnimals = [
     { letter: 'A', image: 'anta.png' },
     { letter: 'B', image: 'baleia.png' },
@@ -71,38 +71,37 @@ const alphabetObjects = [
     { letter: 'Z', image: 'ziper.png' }
 ];
 
-// Definir o tamanho da fase
-const phaseSize = 5;
-let currentPhase = 0;  // Fase atual
 
-// Referências aos elementos HTML
+const phaseSize = 5;  // Tamanho da fase (número de letras por fase)
+let currentPhase = 0; // Fase inicial
+let currentCategory = null; // Categoria atual selecionada
+
 const startScreen = document.getElementById('start-screen');
 const gameContainer = document.getElementById('game-container');
 const lettersContainer = document.querySelector('.letters-container');
 const imagesContainer = document.querySelector('.images-container');
 
-// Função para iniciar o jogo com a categoria escolhida
 function startGame(category) {
-    startScreen.style.display = 'none'; // Esconde a tela inicial
-    gameContainer.classList.remove('hidden'); // Exibe o contêiner do jogo
-
-    loadPhase(category); // Carrega a primeira fase
+    currentCategory = category;  // Salva a categoria escolhida
+    startScreen.style.display = 'none';  // Esconde a tela inicial
+    gameContainer.classList.remove('hidden');  // Exibe o jogo
+    loadPhase(category);  // Carrega a primeira fase da categoria
 }
 
-// Função para carregar a fase atual
 function loadPhase(category) {
-    const startIndex = currentPhase * phaseSize; // Início da fase
-    const phaseItems = category.slice(startIndex, startIndex + phaseSize); // Letras da fase atual
+    const startIndex = currentPhase * phaseSize;  // Determina o índice inicial da fase
+    const phaseItems = category.slice(startIndex, startIndex + phaseSize);  // Pega os itens da fase
 
-    lettersContainer.innerHTML = ''; // Limpar os itens anteriores
-    imagesContainer.innerHTML = '';  // Limpar as imagens anteriores
+    // Limpa as letras e as imagens da tela
+    lettersContainer.innerHTML = '';
+    imagesContainer.innerHTML = '';
 
+    // Cria as letras e as imagens para a fase
     phaseItems.forEach(item => {
         const letterButton = document.createElement('button');
         letterButton.classList.add('letter');
         letterButton.textContent = item.letter;
 
-        // Evento de clique na letra
         letterButton.addEventListener('click', () => {
             selectedLetter = item.letter;
             const images = document.querySelectorAll('.image');
@@ -125,26 +124,26 @@ function loadPhase(category) {
     });
 }
 
-// Função para verificar se a correspondência foi correta
 function checkMatch(letter, imageDiv, letterButton) {
     if (letter === selectedLetter) {
         imageDiv.classList.add('matched');
         letterButton.disabled = true;
 
-        // Verifica se todas as imagens da fase foram correspondidas
+        // Se todos os itens foram combinados, carrega a próxima fase
         if (document.querySelectorAll('.matched').length === phaseSize) {
-            currentPhase++; // Avança para a próxima fase
-            if (currentPhase * phaseSize < alphabetAnimals.length) {
-                loadPhase(alphabetAnimals); // Carrega a próxima fase
+            currentPhase++;  // Avança para a próxima fase
+
+            // Se ainda há mais fases na categoria
+            if (currentPhase * phaseSize < currentCategory.length) {
+                loadPhase(currentCategory);  // Carrega a próxima fase na mesma categoria
             } else {
-                // Aqui você pode mostrar uma mensagem de sucesso ou o que preferir
-                console.log('Parabéns! Você completou todas as fases.');
+                console.log('Parabéns! Você completou todas as fases dessa categoria.');
             }
         }
     }
 }
 
-// Eventos de clique nos botões de escolha de categoria
+// Evento de clique para os botões de categoria
 document.getElementById('animal-btn').addEventListener('click', () => startGame(alphabetAnimals));
 document.getElementById('fruit-btn').addEventListener('click', () => startGame(alphabetFruits));
 document.getElementById('object-btn').addEventListener('click', () => startGame(alphabetObjects));
